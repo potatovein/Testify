@@ -7,9 +7,9 @@ require("dotenv").config();
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("/api/questions", questionRoutes)
+app.use("/api/questions", questionRoutes);
 
-mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("MongoDB connected"))
     .catch(err => console.log(err));
 
