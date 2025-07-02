@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        Testify
+    </title>
+</head>
+<body>
+    <h1>Create MCQ</h1>
+    <form id="mcqForm">
+        <input type="text" placeolder="Question" id="question" required><br>
+        <input type="text" placeholder="Option A" id="a"><br>
+        <input type="text" placeholder="Option B" id="b"><br>
+        <input type="text" placeholder="Option C" id="c"><br>
+        <input type="text" placeholder="Option D" id="d"><br>
+        <input type="text" placeholder="Option E" id="e"><br>
+        <input type="text" placeholder="Correct Answer (e.g., A)" id="correct"><br>
+        <input type="text" placeholder="Topic" id="Topic"><br>
+        <input type="text" placeholder="Thread" id="Thread"><br>
+        <button type="submit">Save</button>
+    </form>
+
+    <script>
+        document.getElementById("mcqForm").addEventListener("submit", async(e) => {
+            e.preventDefault();
+
+            const payload = {
+                type: "MCQ",
+                questionText: document.getElementById("question").value,
+                options: [document.getElementById("a").value, document.getElementById("b").value, document.getElementById("c").value, document.getElementById("d").value, document.getElementById("e").value],
+                correctAnswer: document.getElementById("correct").value,
+                topic: document.getElementById("Topic").value,
+                thread: document.getElementById("Thread").value,
+                difficulty: "Medium"
+            };
+
+            const res = await fetch("http://localhost:5000/api/questions/add", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(payload)
+            });
+
+            const data = await res.json();
+            alert("Question saved: " + JSON.stringify(data));
+        });
+    </script>
+</body>
+</html>
