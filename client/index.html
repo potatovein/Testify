@@ -35,24 +35,24 @@
                 difficulty: "Medium"
             };
 
-            const res = await fetch("https://testify-ps1m.onrender.com/api/decks/create", {
+            const deckres = await fetch("https://testify-ps1m.onrender.com/api/decks/create", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({name: "ExampleDeck"})
             });
 
-            const deck = await res.json();
+            const deck = await deckres.json();
             alert("Deck Created: " + JSON.stringify(deck));
 
             payload.deckId = deck._id
 
-            res = await fetch("https://testify-ps1m.onrender.com/api/questions/add", {
+            qres = await fetch("https://testify-ps1m.onrender.com/api/questions/add", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(payload)
             })
 
-            questionData = await res.json();
+            questionData = await qres.json();
             alert(JSON.stringify(questionData));
         });
     </script>
