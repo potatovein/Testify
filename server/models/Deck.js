@@ -6,3 +6,5 @@ const DeckSchema = new mongoose.Schema({
     isPrivate: {type: Boolean, default: false},
     questionIds: [{type: mongoose.Schema.Types.ObjectId, ref: "Question"}]
 })
+
+module.exports = mongoose.model("Deck", DeckSchema)
