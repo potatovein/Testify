@@ -25,6 +25,7 @@
             e.preventDefault();
 
             const payload = {
+                deckId: null,
                 type: "MCQ",
                 questionText: document.getElementById("question").value,
                 options: [document.getElementById("a").value, document.getElementById("b").value, document.getElementById("c").value, document.getElementById("d").value, document.getElementById("e").value],
@@ -34,14 +35,16 @@
                 difficulty: "Medium"
             };
 
-            // const res = await fetch("https://testify-ps1m.onrender.com/api/decks/create", {
-            //     method: "POST",
-            //     headers: {"Content-Type": "application/json"},
-            //     body: JSON.stringify({name: "ExampleDeck"})
-            // });
+            const res = await fetch("https://testify-ps1m.onrender.com/api/decks/create", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({name: "ExampleDeck"})
+            });
 
-            // const data = await res.json();
-            // alert("Deck Created: " + JSON.stringify(data));
+            const deck = await res.json();
+            alert("Deck Created: " + JSON.stringify(deck));
+
+            payload[deckId] = deck._id
 
             res = await fetch("https://testify-ps1m.onrender.com/api/questions/add", {
                 method: "POST",
@@ -49,8 +52,8 @@
                 body: JSON.stringify(payload)
             })
 
-            data = await res.json();
-            alert(JSON.stringify(data));
+            questionData = await res.json();
+            alert(JSON.stringify(questionData));
         });
     </script>
 </body>
