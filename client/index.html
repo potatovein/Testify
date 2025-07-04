@@ -45,7 +45,7 @@
             alert("Deck Created: " + JSON.stringify(deck));
 
             payload.deckId = deck._id
-            alert(payload)
+            alert(JSON.stringify(payload))
 
             qres = await fetch("https://testify-ps1m.onrender.com/api/questions/add", {
                 method: "POST",
