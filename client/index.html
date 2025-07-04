@@ -34,7 +34,7 @@
             alert("Deck Created: " + JSON.stringify(deck));
 
             const payload = {
-                deckId: deck._id,
+                deckId: deck["_id"],
                 type: "MCQ",
                 questionText: document.getElementById("question").value,
                 options: [document.getElementById("a").value, document.getElementById("b").value, document.getElementById("c").value, document.getElementById("d").value, document.getElementById("e").value],
@@ -43,7 +43,7 @@
                 thread: document.getElementById("Thread").value,
                 difficulty: "Medium"
             };
-            
+
             alert(JSON.stringify(payload))
 
             qres = await fetch("https://testify-ps1m.onrender.com/api/questions/add", {
