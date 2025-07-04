@@ -24,17 +24,6 @@
         document.getElementById("mcqForm").addEventListener("submit", async(e) => {
             e.preventDefault();
 
-            const payload = {
-                deckId: null,
-                type: "MCQ",
-                questionText: document.getElementById("question").value,
-                options: [document.getElementById("a").value, document.getElementById("b").value, document.getElementById("c").value, document.getElementById("d").value, document.getElementById("e").value],
-                correctAnswer: document.getElementById("correct").value,
-                topic: document.getElementById("Topic").value,
-                thread: document.getElementById("Thread").value,
-                difficulty: "Medium"
-            };
-
             const deckres = await fetch("https://testify-ps1m.onrender.com/api/decks/create", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
@@ -44,7 +33,17 @@
             const deck = await deckres.json();
             alert("Deck Created: " + JSON.stringify(deck));
 
-            payload.deckId = deck._id
+            const payload = {
+                deckId: deck._id,
+                type: "MCQ",
+                questionText: document.getElementById("question").value,
+                options: [document.getElementById("a").value, document.getElementById("b").value, document.getElementById("c").value, document.getElementById("d").value, document.getElementById("e").value],
+                correctAnswer: document.getElementById("correct").value,
+                topic: document.getElementById("Topic").value,
+                thread: document.getElementById("Thread").value,
+                difficulty: "Medium"
+            };
+            
             alert(JSON.stringify(payload))
 
             qres = await fetch("https://testify-ps1m.onrender.com/api/questions/add", {
