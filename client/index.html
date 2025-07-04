@@ -33,6 +33,7 @@
             const deck = await deckres.json();
             alert("Deck Created: " + JSON.stringify(deck));
 
+            console.log(deck["_id"]);
             const payload = {
                 deckId: deck["_id"],
                 type: "MCQ",
