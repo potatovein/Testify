@@ -3,9 +3,6 @@ const mongoose = require("mongoose");
 const QuestionSchema = new mongoose.Schema({
      
     createdBy: {type: mongoose.Schema.Types.ObjectId, ref: "User", default: null},
-    isPublic: {type: Boolean, default: false},
-    deckTitle: {type: String, required: true},
-
     type: {type: String, enum: ["MCQ", "SAQ"], required: true},
     questionText: String,
     options: [String], // MCQ only
