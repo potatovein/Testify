@@ -34,10 +34,10 @@
                 difficulty: "Medium"
             };
 
-            const res = await fetch("https://testify-ps1m.onrender.com/api/questions/add", {
+            const res = await fetch("https://testify-ps1m.onrender.com/api/questions/createdeck", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(payload)
+                body: JSON.stringify({name: "ExampleDeck"})
             });
 
             const data = await res.json();
