@@ -4,13 +4,12 @@ const Deck = require("../models/Deck");
 
 router.post("/create", async(req, res) => {
     try {
-        const deck = new Deck(req.body);
-        await deck.save();
+        const deck = Deck.create(req.body);
         res.status(201).json(deck);
     } catch(err) {
         res.status(400).json({error: err.message});
     }
-})
+});
 
 
 module.exports = router;

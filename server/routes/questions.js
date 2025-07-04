@@ -3,7 +3,7 @@ const router = express.Router();
 const Question = require("../models/Question");
 const Deck = require("../models/Deck");
 
-router.post("/create", async (req, res) => {
+router.post("/add", async (req, res) => {
     const {
         deckId,
         ...questionData
